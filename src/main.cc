@@ -1,10 +1,4 @@
-// Windows.h strict mode
-#define STRICT
-#define UNICODE
-
-#include "nan.h"
-
-#include <windows.h>
+#include "main.hh"
 
 #include <cstdio>
 #include <memory>
@@ -52,6 +46,8 @@ v8::Local<v8::Object> CreateEntry(Isolate *isolate, LPWSTR name, LPWSTR type, DW
   obj->Set(Nan::New("type").ToLocalChecked(), v8TypeString.ToLocalChecked());
   obj->Set(Nan::New("data").ToLocalChecked(), Nan::New(static_cast<uint32_t>(data)));
   return obj;
+}
+
 }
 
 v8::Local<v8::Array> EnumerateValues(HKEY hCurrentKey, Isolate *isolate) {
@@ -137,6 +133,8 @@ v8::Local<v8::Array> EnumerateValues(HKEY hCurrentKey, Isolate *isolate) {
 
   return results;
 }
+
+namespace {
 
 NAN_METHOD(ReadValues)
 {

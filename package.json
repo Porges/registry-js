@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "pretest": "yarn build",
-    "test": "mocha dist/test/**/*.js",
+    "test": "mocha dist/test/**/*.js && build/Release/test.exe",
     "prepublish": "yarn build && yarn test",
     "postpublish": "git push --follow-tags",
     "benchmark": "ts-node benchmarks/reg.ts"
@@ -36,6 +36,7 @@
     "typescript": "^2.6.2"
   },
   "dependencies": {
-    "nan": "^2.8.0"
+    "nan": "^2.8.0",
+    "cppunitlite": "^1.0.0"
   }
 }
